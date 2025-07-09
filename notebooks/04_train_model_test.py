@@ -18,6 +18,12 @@ top_features = select_features(X_train, y_train, k=10)
 X_train_sel = X_train[top_features]
 X_test_sel = X_test[top_features]
 
-model = train_model(X_train_sel, y_train)
+
+model = train_model(X_train_sel, y_train, model_type='logistic')
 report = evaluate_model(model, X_test_sel, y_test)
-print("Classification Report:\n", report)
+print("📊 Logistic Regression Report:\n", report)
+
+model_rf = train_model(X_train_sel, y_train, model_type='rf')
+report_rf = evaluate_model(model_rf, X_test_sel, y_test)
+print("🌲 Random Forest Report:\n", report_rf)
+
